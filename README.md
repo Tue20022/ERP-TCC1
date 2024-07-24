@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### README (English Version)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# TCC1 Project: Modeling and Development of an ERP for Small Enterprises
 
-## About Laravel
+## Introduction
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project represents the final proof of my undergraduate course and involves the modeling and development of an Enterprise Resource Planning (ERP) system tailored for small enterprises. Due to the limited timeframe, only a few modules of the ERP will be fully developed.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **PHP**: The core programming language used for the backend.
+- **Laravel**: The PHP framework used to build the application.
+- **Bootstrap**: The CSS framework used for responsive and modern UI design.
+- **Herd**: Used for managing the local development environment.
+- **Breeze**: A Laravel package for authentication and basic scaffolding.
 
-## Learning Laravel
+## Project Structure
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The project consists of several key modules, some of which will be fully developed within the scope of this project:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Project Management**
+2. **Delineamento Management**
+3. **Detalhamento Management**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Obs.:** Delineamento and Detalhamento are documents and represent the next steps needed to complete the project.
 
-## Laravel Sponsors
+## Conclusion
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+This project is a significant step in my academic journey, demonstrating my ability to apply theoretical knowledge in a practical setting. While only a subset of the ERP modules will be fully implemented due to time constraints, the project lays a strong foundation for future development.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### README (Versão em Português)
 
-## Contributing
+# Projeto TCC1: Modelagem e Desenvolvimento de um ERP para Pequenas Empresas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Introdução
 
-## Code of Conduct
+Este projeto representa a prova final do meu curso de graduação e envolve a modelagem e desenvolvimento de um sistema de Planejamento de Recursos Empresariais (ERP) voltado para pequenas empresas. Devido ao prazo limitado, apenas alguns módulos do ERP serão completamente desenvolvidos.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Tecnologias Utilizadas
 
-## Security Vulnerabilities
+- **PHP**: A linguagem de programação principal usada para o backend.
+- **Laravel**: O framework PHP usado para construir a aplicação.
+- **Bootstrap**: O framework CSS usado para design de interface responsiva e moderna.
+- **Herd**: Usado para gerenciar o ambiente de desenvolvimento local.
+- **Breeze**: Um pacote do Laravel para autenticação e scaffolding básico.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Estrutura do Projeto
 
-## License
+O projeto consiste em vários módulos principais, alguns dos quais serão totalmente desenvolvidos dentro do escopo deste projeto:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Gestão de Projetos**
+2. **Gestão de Delineamentos**
+3. **Gestão de Detalhamentos**
+
+**Obs.**: Delineamento e Detalhamento são documentos e representam as próximas etapas necessárias para a conclusão do projeto.
+
+## Conclusão
+
+Este projeto é um passo significativo na minha jornada acadêmica, demonstrando minha capacidade de aplicar conhecimentos teóricos em um ambiente prático. Embora apenas um subconjunto dos módulos do ERP seja totalmente implementado devido às restrições de tempo, o projeto estabelece uma base sólida para desenvolvimento futuro.
