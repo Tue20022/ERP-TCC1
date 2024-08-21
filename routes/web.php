@@ -13,6 +13,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 // Projetos
 Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');
 Route::get('/projeto/novo', [ProjetoController::class, 'create'])->name('projetos.create');
+Route::post('/projeto/novo', [ProjetoController::class, 'store'])->name('projetos.store');
 
 //Delineamentos
 Route::get('/delineamentos', [DelineamentoController::class,'index'])->name('delineamentos.index');
