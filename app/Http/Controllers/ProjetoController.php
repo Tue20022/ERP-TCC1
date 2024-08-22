@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Projeto;
 use Illuminate\Http\Request;
 
 
@@ -33,4 +33,9 @@ class ProjetoController extends Controller
         return redirect()->route('projetos.index');
 
     }
+    
+    public function config()
+    {
+        return view('projetos.config');
+    }  
 }

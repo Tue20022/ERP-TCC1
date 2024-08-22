@@ -66,7 +66,7 @@
                             <h6 class="collapse-header">Acessos rápidos:</h6>
                             <a class="collapse-item" href="{{route('projetos.create')}}">Cadastro</a>
                             <a class="collapse-item" href="{{route('projetos.index')}}">Listagem</a>
-                            <a class="collapse-item" href="">Configurações</a>
+                            <a class="collapse-item" href="{{route('projetos.config')}}">Configurações</a>
                         </div>
                     </div>
                 </li>

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status__projetos', function (Blueprint $table) {
+        Schema::create('statusProjetos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->int('ativo');
+            $table->integer('ativo');
             $table->timestamps();
         });
     }

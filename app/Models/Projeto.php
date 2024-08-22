@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
+use App\Models\TipoProjeto;
+use App\Models\StatusProjeto;
+use App\Models\Cliente;
 
 class Projeto extends Model
 {
@@ -28,12 +32,12 @@ class Projeto extends Model
     
     public function tipo()
     {
-        return $this->belongsTo(Tipo_Projeto::class, 'tipo');
+        return $this->belongsTo(TipoProjeto::class, 'tipo');
     }
 
     public function status()
     {
-        return $this->belongsTo(Status_Projeto::class,'status');
+        return $this->belongsTo(StatusProjeto::class,'status');
     }
 
     public function cliente()
