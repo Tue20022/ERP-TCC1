@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Login;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -15,19 +18,42 @@ class LoginController extends Controller
     public function logar(Request $request)
     {
         $login = $request->input('login');
-        $password = $request->input('password');
+        $password = Hash::make($request->input('password'));
 
-        $user = Login::where('login', $login)->where('password', $password)->first();
-
-        if ($user) {
-            return redirect()->route('home');
-        } else {
-            return redirect()->route('login');
+        try
+        {
+            User::where('login', $login)->where('password', $password)->first();
+            return redirect()->route('home')->with('successMessage', 'Login efetuado com sucesso');
+        } catch (\Exception $e){
+            Log::info('Usuário ou senha inválidos: ' . $e->getMessage());
+            return redirect()->route('login')->with('errorMessage', 'Usuário ou senha inválidos');
         }
     }
 
     public function logout()
     {
+        return redirect()->route('login');
+    }
+
+    public function registro()
+    {
+        return view('register');
+    }
+
+    public function registrar(Request $request)
+    {
+        $primeiroNome = $request->input('primeiroNome');
+        $ultimoNome = $request->input('ultimoNome');
+        $login = $request->input('login');
+        $password = $request->input('senha');
+        $reapetPassword = $request->input('repeatSenha');
+
+        $user = new User();
+        $user->login = $login;
+        $user->password = Hash::make($password);
+        $user->ativo = 1;
+        $user->save();
+
         return redirect()->route('login');
     }
 }

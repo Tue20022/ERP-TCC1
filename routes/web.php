@@ -12,9 +12,14 @@ use App\Http\Controllers\LoginController;
 
 //Login
 Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
+
+//Registro de Usuário
+Route::get('/registro', [LoginController::class, 'registro'])->name('registro');
+Route::post('/registrar', [LoginController::class, 'registrar'])->name('registrar');
 
 //Home
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 // Projetos
 Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');
