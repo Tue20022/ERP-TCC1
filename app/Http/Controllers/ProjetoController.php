@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Projeto;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 
 class ProjetoController extends Controller
 {
@@ -14,7 +14,11 @@ class ProjetoController extends Controller
 
     public function create()
     {
-        return view('projetos.create');
+        //como passar uma lista de todos os usuários da tabela users
+        $users = User::all();
+
+
+        return view('projetos.create', compact('users'));
     }
 
     public function store(Request $request)

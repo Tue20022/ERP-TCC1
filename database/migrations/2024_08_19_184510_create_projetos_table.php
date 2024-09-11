@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->id();
-            $table->integer('responsavel');
             $table->string('numero_interno');
             $table->string('numero_externo')->nullable();
             $table->string('prioridade');
@@ -29,6 +28,9 @@ return new class extends Migration
 
             $table->integer('cliente')->nullable();
             $table->foreign('cliente')->references('id')->on('clientes');
+
+            $table->integer('responsavel');
+            $table->foreign('responsavel')->references('id')->on('users');
 
         });
     }

@@ -21,13 +21,12 @@
 
                         <div class="col-sm-3 mb-3">
                             <label for="responsavel" class="form-label">Responsável*</label>
-                                <select class="form-control" id="responsavel" name="responsavel" required>
-                                    <option value="" disabled selected>Selecione um responsável</option>
-                                    <option value="1">João Silva</option>
-                                    <option value="2">Maria Oliveira</option>
-                                    <option value="3">Carlos Sousa</option>
-                                    <option value="4">Matheus Nunes</option>
-                                </select>
+                            <select class="form-control" id="responsavel" name="responsavel" required>
+                                <option value="" disabled selected>Selecione um responsável</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
@@ -35,8 +34,8 @@
                             <label for="nome" class="form-label">Número Interno*</label>
                             <div class="input-group">
                                 <span class="input-group-text">PJ-</span>
-                                <input type="text" class="form-control" id="numero_interno" name="numero_interno" required
-                                    placeholder="Digite o número">
+                                <input type="text" class="form-control" id="numero_interno" name="numero_interno"
+                                    required placeholder="Digite o número">
                             </div>
                         </div>
 
@@ -93,8 +92,8 @@
                             <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
                         </div>
                     </div>
-                    
-                    <div class="row mt-3">  
+
+                    <div class="row mt-3">
                         <div class="col-sm-12 d-flex justify-content-end">
                             <a href="{{ route('projetos.index') }}" class="btn btn-danger mr-1">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -15,11 +15,16 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
 
 //Registro de Usuário
-Route::get('/registro', [LoginController::class, 'registro'])->name('registro');
+Route::get('/registrar', [LoginController::class, 'registro'])->name('registro');
 Route::post('/registrar', [LoginController::class, 'registrar'])->name('registrar');
 
 //Home
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+
+//Configurações
+Route::get('/config/users', [HomeController::class, 'configUsers'])->name('config.indexUsers');
+Route::get('/config/permission', [HomeController::class, 'configPermission'])->name('config.indexPermission');
+Route::get('/config/newUser', [HomeController::class, 'configNewUser'])->name('config.newUser');
 
 // Projetos
 Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('login')->unique();
             $table->string('password');
+            $table->boolean('ativo')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
