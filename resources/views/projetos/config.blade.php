@@ -131,24 +131,24 @@
                                                     <td>
                                                         <button type="button" class="btn btn-warning btn-sm mr-1"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modalEditar{{ $t->id }}">
+                                                            data-bs-target="#modalEditarTipo{{ $t->id }}">
                                                             <i class="bi bi-pencil"></i> Editar
                                                         </button>
                                                         <button type="button" class="btn btn-danger btn-sm mr-1"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#modalExcluir{{ $t->id }}">
+                                                            data-bs-target="#modalExcluirTipo{{ $t->id }}">
                                                             <i class="bi bi-trash"></i> Excluir
                                                         </button>
                                                         @if ($t->ativo)
                                                             <button type="button" class="btn btn-secondary btn-sm"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#modalDesativar{{ $t->id }}">
+                                                                data-bs-target="#modalDesativarTipo{{ $t->id }}">
                                                                 <i class="bi bi-x-circle"></i> Desativar
                                                             </button>
                                                         @else
                                                             <button type="button" class="btn btn-success btn-sm"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#modalAtivar{{ $t->id }}">
+                                                                data-bs-target="#modalAtivarTipo{{ $t->id }}">
                                                                 <i class="bi bi-check-circle"></i> Ativar
                                                             </button>
                                                         @endif
@@ -279,6 +279,119 @@
             </div>
         </div>
     @endforeach
+
+    <!-- Modal de Editar Tipo -->
+    @foreach ($tipo as $t)
+        <div class="modal fade text-start" id="modalEditarTipo{{ $t->id }}" tabindex="-1"
+            aria-labelledby="modalEditarTipo{{ $t->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="modalEditarTipo{{ $t->id }}Label">Editar Tipo</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <form action="{{ route('config.editTipo', ['id' => $t->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome_tipo" name="nome_tipo" value="{{ $t->name }}">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="ativo" name="ativo"
+                                    {{ $t->ativo ? 'checked' : '' }}>
+                                <label class="form-check label" for="ativo">Ativo</label>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Excluir Tipo -->
+    @foreach ($tipo as $t)
+        <div class="modal fade text-start" id="modalExcluirTipo{{ $t->id }}" tabindex="-1"
+            aria-labelledby="modalExcluirTipo{{ $t->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalExcluirTipo{{ $t->id }}Label">Excluir Tipo</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja excluir o tipo {{ $t->name }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.deleteTipo', ['id' => $t->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Desativar Tipo -->
+    @foreach ($tipo as $t)
+        <div class="modal fade text-start" id="modalDesativarTipo{{ $t->id }}" tabindex="-1"
+            aria-labelledby="modalDesativarTipo{{ $t->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalDesativarTipo{{ $t->id }}Label">Desativar Tipo</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja desativar o tipo {{ $t->name }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.disableTipo', ['id' => $t->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Desativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Ativar Tipo -->
+    @foreach ($tipo as $t)
+        <div class="modal fade text-start" id="modalAtivarTipo{{ $t->id }}" tabindex="-1"
+            aria-labelledby="modalAtivarTipo{{ $t->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalAtivarTipo{{ $t->id }}Label">Ativar Tipo</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja ativar o tipo {{ $t->name }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.enableTipo', ['id' => $t->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    
 
     <script>
         var myModal = document.getElementById('myModal')
