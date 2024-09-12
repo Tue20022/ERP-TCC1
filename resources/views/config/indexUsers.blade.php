@@ -40,8 +40,9 @@
                                         @endif
                                     <td>
                                         <!-- botao de edit-->
-                                        <a href="{{ route('config.editUser', ['id' => $user->id]) }}"
-                                            class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Editar</a>
+                                        <button type="button" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal"
+                                            data-bs-target="#modalEditar{{ $user->id }}">
+                                            <i class="bi bi-pencil"></i> Editar
 
                                         <!-- botao de delete-->
                                         <button type="button" class="btn btn-danger btn-sm mr-1" data-bs-toggle="modal"
@@ -141,6 +142,54 @@
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Editar -->
+    @foreach ($users as $user)
+        <div class="modal fade text-start" id="modalEditar{{ $user->id }}" tabindex="-1"
+            aria-labelledby="modalEditar{{ $user->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="modalEditar{{ $user->id }}Label">Editar Usuário</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('config.updateUser', ['id' => $user->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="login" class="form-label">Login</label>
+                                <input type="text" class="form-control" id="login" name="login" value="{{ $user->login }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">Confirmação de Senha</label>
+                                <input type="password" class="form-control" id="password_confirmation"
+                                    name="password_confirmation">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="ativo" name="ativo"
+                                    {{ $user->ativo ? 'checked' : '' }}>
+                                <label class="form-check label" for="ativo">Ativo</label>
+                            </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Editar</button>
                         </form>
                     </div>
                 </div>

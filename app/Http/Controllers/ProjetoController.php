@@ -14,10 +14,9 @@ class ProjetoController extends Controller
 
     public function create()
     {
-        //como passar uma lista de todos os usuários da tabela users
-        $users = User::all();
-
-
+        $user = new User();
+        $users = $user->where('ativo', true)->get();
+       
         return view('projetos.create', compact('users'));
     }
 

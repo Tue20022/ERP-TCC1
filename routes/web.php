@@ -22,7 +22,7 @@ Route::get('/config/users', [HomeController::class, 'indexUsers'])->name('config
 Route::get('/config/newUser', [HomeController::class, 'createUser'])->name('config.createUser');
 Route::post('/config/newUser', [HomeController::class, 'storeUser'])->name('config.storeUser');
 Route::get('/config/editUser', [HomeController::class, 'editUser'])->name('config.editUser');
-Route::put('/config/editUser', [HomeController::class, 'updateUser'])->name('config.updateUser');
+Route::put('/config/editUser/{id}', [HomeController::class, 'updateUser'])->name('config.updateUser');
 Route::delete('/config/deleteUser/{id}', [HomeController::class, 'deleteUser'])->name('config.deleteUser');
 Route::put('config/disableUser/{id}', [HomeController::class, 'disableUser'])->name('config.disableUser');
 Route::put('config/enableUser/{id}', [HomeController::class, 'enableUser'])->name('config.enableUser');
@@ -36,8 +36,10 @@ Route::get('/projeto/novo', [ProjetoController::class, 'create'])->name('projeto
 Route::post('/projeto/novo', [ProjetoController::class, 'store'])->name('projetos.store');
 Route::get('/projetos/config', [ProjetoController::class, 'config'])->name('projetos.config');
 
-//Configurações de Projetos
+//Status de Projetos
 Route::post('/projetos/config/status', [StatusProjetoController::class, 'status'])->name('config.status');
+
+//Tipos de Projetos
 Route::post('/projetos/config/tipo', [TipoProjetoController::class, 'tipo'])->name('config.tipo');
 
 //Delineamentos

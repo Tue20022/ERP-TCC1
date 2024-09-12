@@ -61,14 +61,19 @@ class HomeController extends Controller
         return view("config.editUser", compact('user'));
     }
 
-    public function updateUser(User $user, Request $request)
+    public function updateUser($id, Request $request)
     {
-        value:
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->route('config.indexUsers')->with('errorMessage', 'Usuário não encontrado');
+        }
+        
         $user->name = $request->input('name');
         $user->login = $request->input('login');
 
         // Verifica se a senha 
-        if ($request->input('password')) {
+        if ($request->input('password')!=null) {
             $validator = Validator::make($request->all(), [
                 'password' => 'required|string|min:3|confirmed', // Verifica se as senhas conferem
             ]);
@@ -76,7 +81,7 @@ class HomeController extends Controller
             // Verifica se a validação falhou
             if ($validator->fails()) {
                 // Redireciona de volta para a rota 'registro' com as mensagens de erro
-                return redirect()->route('config.editUser', $user)
+                return redirect()->route('config.indexUsers', $user)
                     ->withErrors($validator) // Passa os erros de validação
                     ->withInput(); // Retorna os dados anteriores ao formulário
             }
