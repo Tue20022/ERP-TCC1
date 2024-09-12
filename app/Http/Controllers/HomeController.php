@@ -71,6 +71,11 @@ class HomeController extends Controller
         
         $user->name = $request->input('name');
         $user->login = $request->input('login');
+        $user->ativo = $request->input('ativo');
+
+        if ($user->ativo == null) {
+            $user->ativo = 0;
+        }
 
         // Verifica se a senha 
         if ($request->input('password')!=null) {

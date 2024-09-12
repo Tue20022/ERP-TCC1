@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Projeto;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\StatusProjeto;
+use App\Models\TipoProjeto;
 
 class ProjetoController extends Controller
 {
@@ -39,6 +41,11 @@ class ProjetoController extends Controller
     
     public function config()
     {
-        return view('projetos.config');
+        $status = new StatusProjeto();
+        $status = $status->all();
+
+        $tipo = new TipoProjeto();
+        $tipo = $tipo->all();
+        return view('projetos.config', compact('status', 'tipo'));
     }  
 }

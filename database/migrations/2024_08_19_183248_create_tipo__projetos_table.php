@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tipoProjetos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('ativo');
+            $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo__projetos');
+        Schema::dropIfExists('tipoProjetos');
     }
 };

@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\DetalhamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjetoController;
@@ -38,9 +37,17 @@ Route::get('/projetos/config', [ProjetoController::class, 'config'])->name('proj
 
 //Status de Projetos
 Route::post('/projetos/config/status', [StatusProjetoController::class, 'status'])->name('config.status');
+Route::put('/projetos/config/status/edit/{id}', [StatusProjetoController::class, 'statusUpdate'])->name('config.editStatus');
+Route::delete('/projetos/config/status/delete/{id}', [StatusProjetoController::class, 'statusDelete'])->name('config.deleteStatus');
+Route::put('/projetos/config/status/disable/{id}', [StatusProjetoController::class, 'statusDisable'])->name('config.disableStatus');
+Route::put('/projetos/config/status/enable{id}', [StatusProjetoController::class, 'statusEnable'])->name('config.enableStatus');
 
 //Tipos de Projetos
 Route::post('/projetos/config/tipo', [TipoProjetoController::class, 'tipo'])->name('config.tipo');
+Route::put('/projetos/config/tipo/edit{id}', [TipoProjetoController::class, 'tipoUpdate'])->name('config.editTipo');
+Route::delete('/projetos/config/tipo/delete{id}', [TipoProjetoController::class, 'tipoDelete'])->name('config.deleteTipo');
+Route::put('/projetos/config/tipo/disable{id}', [TipoProjetoController::class, 'tipoDisable'])->name('config.disableTipo');
+Route::put('/projetos/config/tipo/enable{id}', [TipoProjetoController::class, 'tipoEnable'])->name('config.enableTipo');
 
 //Delineamentos
 Route::get('/delineamentos', [DelineamentoController::class,'index'])->name('delineamentos.index');

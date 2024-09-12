@@ -9,7 +9,7 @@ class TipoProjetoController extends Controller
     public function tipo(Request $request)
     {
         $tipo = new TipoProjeto();
-        $tipo->tipo = $request->nome_tipo;
+        $tipo->name = $request->nome_tipo;
         $tipo->save();
         return redirect()->route('projetos.config');
     }
