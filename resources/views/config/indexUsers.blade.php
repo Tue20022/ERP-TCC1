@@ -87,6 +87,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <form action="{{ route('config.disableUser', ['id' => $user->id]) }}" method="post">
                             @csrf
+                            @method('put')
                             <button type="submit" class="btn btn-danger">Desativar</button>
                         </form>
                     </div>
@@ -112,6 +113,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <form action="{{ route('config.enableUser', ['id' => $user->id]) }}" method="post">
                             @csrf
+                            @method('put')
                             <button type="submit" class="btn btn-success">Ativar</button>
                         </form>
                     </div>
@@ -137,6 +139,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <form action="{{ route('config.deleteUser', ['id' => $user->id]) }}" method="post">
                             @csrf
+                            @method('delete')
                             <button type="submit" class="btn btn-danger">Excluir</button>
                         </form>
                     </div>

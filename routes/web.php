@@ -22,10 +22,10 @@ Route::get('/config/users', [HomeController::class, 'indexUsers'])->name('config
 Route::get('/config/newUser', [HomeController::class, 'createUser'])->name('config.createUser');
 Route::post('/config/newUser', [HomeController::class, 'storeUser'])->name('config.storeUser');
 Route::get('/config/editUser', [HomeController::class, 'editUser'])->name('config.editUser');
-Route::post('/config/editUser', [HomeController::class, 'updateUser'])->name('config.updateUser');
-Route::post('/config/deleteUser/{id}', [HomeController::class, 'deleteUser'])->name('config.deleteUser');
-Route::post('config/disableUser/{id}', [HomeController::class, 'disableUser'])->name('config.disableUser');
-Route::post('config/enableUser/{id}', [HomeController::class, 'enableUser'])->name('config.enableUser');
+Route::put('/config/editUser', [HomeController::class, 'updateUser'])->name('config.updateUser');
+Route::delete('/config/deleteUser/{id}', [HomeController::class, 'deleteUser'])->name('config.deleteUser');
+Route::put('config/disableUser/{id}', [HomeController::class, 'disableUser'])->name('config.disableUser');
+Route::put('config/enableUser/{id}', [HomeController::class, 'enableUser'])->name('config.enableUser');
 
 //Configurações de Permissões
 Route::get('/config/permission', [HomeController::class, 'configPermission'])->name('config.indexPermission');
