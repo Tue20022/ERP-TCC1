@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="bi bi-tsunami"></i>
                 </div>
@@ -423,6 +423,13 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset("vendor/jquery/jquery.min.js")}}"></script>
     <script src="{{ asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+
+    <!-- Popper.js (necessário para o Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset("vendor/jquery-easing/jquery.easing.min.js")}}"></script>

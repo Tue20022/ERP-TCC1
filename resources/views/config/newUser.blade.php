@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
-                    <form action="{{ route('registrar') }}" method="POST">
+                    <form action="{{ route('config.storeUser') }}" method="POST">
                         @csrf
                         <div class="form-group mb-3">
                             <label for="name">Nome</label>

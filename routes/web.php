@@ -14,17 +14,21 @@ use App\Http\Controllers\LoginController;
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
 
-//Registro de Usuário
-Route::get('/registrar', [LoginController::class, 'registro'])->name('registro');
-Route::post('/registrar', [LoginController::class, 'registrar'])->name('registrar');
-
 //Home
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
-//Configurações
-Route::get('/config/users', [HomeController::class, 'configUsers'])->name('config.indexUsers');
+//Configurações de Usuários
+Route::get('/config/users', [HomeController::class, 'indexUsers'])->name('config.indexUsers');
+Route::get('/config/newUser', [HomeController::class, 'createUser'])->name('config.createUser');
+Route::post('/config/newUser', [HomeController::class, 'storeUser'])->name('config.storeUser');
+Route::get('/config/editUser', [HomeController::class, 'editUser'])->name('config.editUser');
+Route::post('/config/editUser', [HomeController::class, 'updateUser'])->name('config.updateUser');
+Route::post('/config/deleteUser/{id}', [HomeController::class, 'deleteUser'])->name('config.deleteUser');
+Route::post('config/disableUser/{id}', [HomeController::class, 'disableUser'])->name('config.disableUser');
+Route::post('config/enableUser/{id}', [HomeController::class, 'enableUser'])->name('config.enableUser');
+
+//Configurações de Permissões
 Route::get('/config/permission', [HomeController::class, 'configPermission'])->name('config.indexPermission');
-Route::get('/config/newUser', [HomeController::class, 'configNewUser'])->name('config.newUser');
 
 // Projetos
 Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');

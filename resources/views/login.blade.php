@@ -56,14 +56,7 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        <hr>
-                                    </form>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Esqueceu a Senha?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{{route('registro')}}">Criar uma Conta!</a>
-                                    </div>
+                                    </form> 
                                 </div>
                             </div>
                         </div>

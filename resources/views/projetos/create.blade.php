@@ -24,7 +24,7 @@
                             <select class="form-control" id="responsavel" name="responsavel" required>
                                 <option value="" disabled selected>Selecione um responsável</option>
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->nome }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->login }}</option>
                                 @endforeach
                             </select>
                         </div>
