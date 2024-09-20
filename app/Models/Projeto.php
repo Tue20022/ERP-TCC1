@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\TipoProjeto;
 use App\Models\StatusProjeto;
@@ -12,7 +11,7 @@ use App\Models\Cliente;
 
 class Projeto extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'responsavel', //fk
@@ -30,17 +29,17 @@ class Projeto extends Model
         return $this->belongsTo(User::class, 'responsavel');
     }
     
-    public function tipo()
+    public function tipoProjeto()
     {
         return $this->belongsTo(TipoProjeto::class, 'tipo');
     }
 
-    public function status()
+    public function statusProjeto()
     {
         return $this->belongsTo(StatusProjeto::class,'status');
     }
 
-    public function cliente()
+    public function clienteProjeto()
     {
         return $this->belongsTo(Cliente::class, 'cliente');
     }

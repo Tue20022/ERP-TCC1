@@ -50,38 +50,38 @@
                             <label for="tipo" class="form-label">Tipo*</label>
                             <select class="form-control" id="tipo" name="tipo" required>
                                 <option value="" disabled selected>Selecione um tipo</option>
-                                <option value="1">Detalhado</option>
-                                <option value="2">Simplificado</option>
+                                @foreach ($tipo as $t)
+                                    <option value="{{ $t->id }}">{{ $t->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="col-sm-3">
                             <label for="status" class="form-label">Status*</label>
                             <select class="form-control" id="status" name="status" required>
-                                <option value="1">Não iniciado</option>
-                                <option value="2">Em Andamento</option>
-                                <option value="3">Paralisada</option>
-                                <option value="4">Concluída</option>
-                                <option value="5">Cancelada</option>
+                                <option value="" disabled selected>Selecione um status</option>
+                                @foreach ($status as $s)
+                                    <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="col-sm-3">
                             <label for="prioridade" class="form-label">Prioridade*</label>
                             <select class="form-control" id="prioridade" name="prioridade" required>
-                                <option value="1">Baixa</option>
-                                <option value="2">Média</option>
-                                <option value="3">Alta</option>
+                                <option value="Baixa">Baixa</option>
+                                <option value="Média">Média</option>
+                                <option value="Alta">Alta</option>
                             </select>
                         </div>
 
                         <div class="col-sm-3">
                             <label for="cliente" class="form-label">Cliente</label>
                             <select class="form-control" id="cliente" name="cliente">
-                                <option value=""></option>
-                                <option value="1">Empresa A</option>
-                                <option value="2">Empresa B</option>
-                                <option value="3">Empresa C</option>
+                                <option value="" disabled selected>Selecione um cliente</option>
+                                @foreach ($cliente as $c)
+                                    <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

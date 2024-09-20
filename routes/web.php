@@ -8,6 +8,7 @@ use App\Http\Controllers\DelineamentoController;
 use App\Http\Controllers\StatusProjetoController;
 use App\Http\Controllers\TipoProjetoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClienteProjetoController;
 
 //Login
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -34,6 +35,9 @@ Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.ind
 Route::get('/projeto/novo', [ProjetoController::class, 'create'])->name('projetos.create');
 Route::post('/projeto/novo', [ProjetoController::class, 'store'])->name('projetos.store');
 Route::get('/projetos/config', [ProjetoController::class, 'config'])->name('projetos.config');
+Route::get('/projetos/edit/{id}', [ProjetoController::class, 'edit'])->name('projetos.edit');
+Route::put('/projetos/edit/{id}', [ProjetoController::class, 'update'])->name('projetos.update');
+Route::delete('/projetos/delete/{id}', [ProjetoController::class, 'delete'])->name('projetos.delete');
 
 //Status de Projetos
 Route::post('/projetos/config/status', [StatusProjetoController::class, 'status'])->name('config.status');
@@ -48,6 +52,13 @@ Route::put('/projetos/config/tipo/edit{id}', [TipoProjetoController::class, 'tip
 Route::delete('/projetos/config/tipo/delete{id}', [TipoProjetoController::class, 'tipoDelete'])->name('config.deleteTipo');
 Route::put('/projetos/config/tipo/disable{id}', [TipoProjetoController::class, 'tipoDisable'])->name('config.disableTipo');
 Route::put('/projetos/config/tipo/enable{id}', [TipoProjetoController::class, 'tipoEnable'])->name('config.enableTipo');
+
+//Clientes de Projetos
+Route::post('/projetos/config/cliente', [ClienteProjetoController::class, 'clientes'])->name('config.cliente');
+Route::put('/projetos/config/cliente/edit{id}', [ClienteProjetoController::class, 'clientesUpdate'])->name('config.editCliente');
+Route::delete('/projetos/config/cliente/delete{id}', [ClienteProjetoController::class, 'clientesDelete'])->name('config.deleteCliente');
+Route::put('/projetos/config/cliente/disable{id}', [ClienteProjetoController::class, 'clientesDisable'])->name('config.disableCliente');
+Route::put('/projetos/config/cliente/enable{id}', [ClienteProjetoController::class, 'clientesEnable'])->name('config.enableCliente');
 
 //Delineamentos
 Route::get('/delineamentos', [DelineamentoController::class,'index'])->name('delineamentos.index');

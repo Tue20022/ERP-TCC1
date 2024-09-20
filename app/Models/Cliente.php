@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'nome',
+        'name',
         'ativo',
     ];
+
+    public function projetos()
+    {
+        return $this->hasMany(Projeto::class, 'cliente');
+    }
 }

@@ -15,4 +15,9 @@ class StatusProjeto extends Model
         'name',
         'ativo'
     ];
+
+    public function projetos()
+    {
+        return $this->hasMany(Projeto::class, 'status');
+    }
 }
