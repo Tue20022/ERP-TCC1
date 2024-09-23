@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('statusProjetos', function (Blueprint $table) {
+        Schema::create('disciplina_del', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('ativo' )->default(true);
+            $table->string('name')->unique();
+            $table->boolean('ativo')->default(1);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('statusProjetos');
+        Schema::dropIfExists('disciplina_del');
     }
 };

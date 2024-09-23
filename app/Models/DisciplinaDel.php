@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StatusProjeto extends Model
+class DisciplinaDel extends Model
 {
     use HasFactory;
 
-    protected $table = "statusProjetos";
+    protected $table = 'disciplina_del';
 
     protected $fillable = [
         'name',
         'ativo'
     ];
 
-    public function projetos()
+    public function delineamento()
     {
-        return $this->hasMany(Projeto::class, 'status');
+        return $this->hasMany(Delineamento::class);
     }
+
 }

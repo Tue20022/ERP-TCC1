@@ -13,18 +13,16 @@ return new class extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_interno');
+            $table->string('numero_interno')->unique();
             $table->string('numero_externo')->nullable();
             $table->string('prioridade');
+            $table->string('status');
             $table->string('descricao')->nullable();
             $table->timestamps();
 
             //Foreign Keys
             $table->integer('tipo');
             $table->foreign('tipo')->references('id')->on('tipoProjetos');
-
-            $table->integer('status');
-            $table->foreign('status')->references('id')->on('statusProjetos');
 
             $table->integer('cliente')->nullable();
             $table->foreign('cliente')->references('id')->on('clientes');

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\TipoProjeto;
-use App\Models\StatusProjeto;
 use App\Models\Cliente;
 
 class Projeto extends Model
@@ -18,7 +17,7 @@ class Projeto extends Model
         'numero_interno',
         'numero_externo',
         'tipo', //fk
-        'status', //fk
+        'status',
         'prioridade',
         'cliente', //fk
         'descricao',
@@ -34,14 +33,14 @@ class Projeto extends Model
         return $this->belongsTo(TipoProjeto::class, 'tipo');
     }
 
-    public function statusProjeto()
-    {
-        return $this->belongsTo(StatusProjeto::class,'status');
-    }
-
     public function clienteProjeto()
     {
         return $this->belongsTo(Cliente::class, 'cliente');
+    }
+
+    public function delineamento()
+    {
+        return $this->hasOne(Delineamento::class, 'projeto_id');
     }
 
 }

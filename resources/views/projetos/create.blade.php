@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">Preencha os campos abaixo para cadastrar um novo projeto</h5>
+            <h5 class="card-title">Novo Projeto</h5>
         </div>
         <div class="card-body">
             <div class="col-md-12">
@@ -59,10 +59,18 @@
                         <div class="col-sm-3">
                             <label for="status" class="form-label">Status*</label>
                             <select class="form-control" id="status" name="status" required>
-                                <option value="" disabled selected>Selecione um status</option>
-                                @foreach ($status as $s)
-                                    <option value="{{ $s->id }}">{{ $s->name }}</option>
-                                @endforeach
+                                <option value="Em Planejamento" selected >Em Planejamento</option>
+                                <option value="Em Delineamento">Em Delineamento</option>
+                                <option value="Em Detalhamento">Em Detalhamento</option>
+                                <option value="Em Lista de Materiais">Em Lista de Materiais</option>
+                                <option value="Em Transferência de Materiais">Em Transferência de Materiais</option>
+                                <option value="Em Requisição de Compras">Em Requisição de Compras</option>
+                                <option value="Em Recebimento de Materiais">Em Recebimento de Materiais</option>
+                                <option value="Em Inspeção de Recebimento">Em Inspeção de Recebimento</option>
+                                <option value="Em Reserva de Materiais">Em Reserva de Materiais</option>
+                                <option value="Em Fabricação">Em Fabricação</option>
+                                <option value="Concluído">Concluído</option>
+                                <option value="Cancelado">Cancelado</option>
                             </select>
                         </div>
 

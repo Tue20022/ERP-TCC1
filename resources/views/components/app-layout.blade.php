@@ -84,6 +84,7 @@
                         <h6 class="collapse-header">Acessos rápidos:</h6>
                         <a class="collapse-item" href="{{route('delineamentos.create')}}">Cadastro</a>
                         <a class="collapse-item" href="{{route('delineamentos.index')}}">Listagem</a>
+                        <a class="collapse-item" href="{{route('delineamentos.config')}}">Configurações</a>
                     </div>
                 </div>
             </li>

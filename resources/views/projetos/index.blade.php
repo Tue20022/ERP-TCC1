@@ -32,7 +32,7 @@
                                 <td>{{ $projeto->user->name }}</td>
                                 <td>{{ $projeto->tipoProjeto->name }}</td>
                                 <td>{{ $projeto->prioridade }}</td>
-                                <td>{{ $projeto->statusProjeto->name }}</td>
+                                <td>{{ $projeto->status }}</td>
                                 <td>
                                     <a href="{{ route('projetos.edit', $projeto->id) }}" class="btn btn-warning"><i class="bi bi-pencil"></i> Editar</a> 
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $projeto->id }}">

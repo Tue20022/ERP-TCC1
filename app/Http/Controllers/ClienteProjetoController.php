@@ -9,22 +9,30 @@ class ClienteProjetoController extends Controller
 {
     public function clientes(Request $request)
     {
-        $cliente = new Cliente();
-        $cliente->name = $request->nome_cliente;
-        $cliente->save();
-        return redirect()->route('projetos.config');
+        try{     
+            $cliente = new Cliente();
+            $cliente->name = $request->nome_cliente;
+            $cliente->save();
+            return redirect()->route('projetos.config');
+        } catch (\Exception $e) {
+            return redirect()->route('projetos.config')->with('error', 'Erro ao cadastrar cliente');
+        }
     }
 
     public function clientesUpdate(Request $request, $id)
     {
-        $cliente = Cliente::find($id);
-        $cliente->name = $request->nome_cliente;
-        $cliente->ativo = $request->ativo;
-        if ($cliente->ativo == null) {
-            $cliente->ativo = 0;
+        try {
+            $cliente = Cliente::find($id);
+            $cliente->name = $request->nome_cliente;
+            $cliente->ativo = $request->ativo;
+            if ($cliente->ativo == null) {
+                $cliente->ativo = 0;
+            }
+            $cliente->save();
+            return redirect()->route('projetos.config');
+        } catch (\Exception $e) {
+            return redirect()->route('projetos.config')->with('error', 'Erro ao atualizar cliente');
         }
-        $cliente->save();
-        return redirect()->route('projetos.config');
     }
 
     public function clientesDelete($id)

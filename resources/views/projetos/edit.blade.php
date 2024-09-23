@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Editar Projeto</h2>
+                    <h5>Editar Projeto</h5>
                 </div>
                 <div class="col-sm-6">
                     <a href="{{ route('projetos.index') }}" class="btn btn-primary float-right"><i
@@ -63,11 +63,18 @@
                     <div class="col-sm-3">
                         <label for="status">Status*</label>
                         <select class="form-control" id="status" name="status" required>
-                            @foreach ($status as $s)
-                                <option value="{{ $s->id }}" {{ $projeto->status == $s->id ? 'selected' : '' }}>
-                                    {{ $s->name }}
-                                </option>
-                            @endforeach
+                                <option value="Em Planejamento" {{$projeto->status == "Em Planejamento" ? 'selected' : ''}}>Em Planejamento</option>
+                                <option value="Em Delineamento" {{$projeto->status == "Em Delineamento" ? 'selected' : ''}}>Em Delineamento</option>
+                                <option value="Em Detalhamento" {{$projeto->status == "Em Detalhamento" ? 'selected' : ''}}>Em Detalhamento</option>
+                                <option value="Em Lista de Materiais" {{$projeto->status == "Em Lista de Materiais" ? 'selected' : ''}}>Em Lista de Materiais</option>
+                                <option value="Em Transferência de Materiais" {{$projeto->status == "Em Transferência de Materiais" ? 'selected' : ''}}>Em Transferência de Materiais</option>
+                                <option value="Em Requisição de Compras" {{$projeto->status == "Em Requisição de Compras" ? 'selected' : ''}}>Em Requisição de Compras</option>
+                                <option value="Em Recebimento de Materiais" {{$projeto->status == "Em Recebimento de Materiais" ? 'selected' : ''}}>Em Recebimento de Materiais</option>
+                                <option value="Em Inspeção de Recebimento" {{$projeto->status == "Em Inspeção de Recebimento" ? 'selected' : ''}}>Em Inspeção de Recebimento</option>
+                                <option value="Em Reserva de Materiais" {{$projeto->status == "Em Reserva de Materiais" ? 'selected' : ''}}>Em Reserva de Materiais</option>
+                                <option value="Em Fabricação" {{$projeto->status == "Em Fabricação" ? 'selected' : ''}}>Em Fabricação</option>
+                                <option value="Concluído" {{$projeto->status == "Concluído" ? 'selected' : ''}}>Concluído</option>
+                                <option value="Cancelado" {{$projeto->status == "Cancelado" ? 'selected' : ''}}>Cancelado</option>
                         </select>
                     </div>
                     <div class="col-sm-3">

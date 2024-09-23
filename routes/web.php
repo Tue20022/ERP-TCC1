@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\DetalhamentoController;
+use App\Http\Controllers\DisciplinaDelineamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjetoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DelineamentoController;
-use App\Http\Controllers\StatusProjetoController;
 use App\Http\Controllers\TipoProjetoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClienteProjetoController;
@@ -39,13 +39,6 @@ Route::get('/projetos/edit/{id}', [ProjetoController::class, 'edit'])->name('pro
 Route::put('/projetos/edit/{id}', [ProjetoController::class, 'update'])->name('projetos.update');
 Route::delete('/projetos/delete/{id}', [ProjetoController::class, 'delete'])->name('projetos.delete');
 
-//Status de Projetos
-Route::post('/projetos/config/status', [StatusProjetoController::class, 'status'])->name('config.status');
-Route::put('/projetos/config/status/edit/{id}', [StatusProjetoController::class, 'statusUpdate'])->name('config.editStatus');
-Route::delete('/projetos/config/status/delete/{id}', [StatusProjetoController::class, 'statusDelete'])->name('config.deleteStatus');
-Route::put('/projetos/config/status/disable/{id}', [StatusProjetoController::class, 'statusDisable'])->name('config.disableStatus');
-Route::put('/projetos/config/status/enable{id}', [StatusProjetoController::class, 'statusEnable'])->name('config.enableStatus');
-
 //Tipos de Projetos
 Route::post('/projetos/config/tipo', [TipoProjetoController::class, 'tipo'])->name('config.tipo');
 Route::put('/projetos/config/tipo/edit{id}', [TipoProjetoController::class, 'tipoUpdate'])->name('config.editTipo');
@@ -63,6 +56,19 @@ Route::put('/projetos/config/cliente/enable{id}', [ClienteProjetoController::cla
 //Delineamentos
 Route::get('/delineamentos', [DelineamentoController::class,'index'])->name('delineamentos.index');
 Route::get('/delineamentos/novo', [DelineamentoController::class,'create'])->name('delineamentos.create');
+Route::post('/delineamentos/novo', [DelineamentoController::class,'store'])->name('delineamentos.store');
+Route::get('/delineamentos/edit/{id}', [DelineamentoController::class,'edit'])->name('delineamentos.edit');
+Route::put('/delineamentos/edit/{id}', [DelineamentoController::class,'update'])->name('delineamentos.update');
+Route::delete('/delineamentos/delete/{id}', [DelineamentoController::class,'delete'])->name('delineamentos.delete');
+Route::get('/delineamentos/config', [DelineamentoController::class,'config'])->name('delineamentos.config');
+
+//Disciplinas de Delinamentos
+Route::post('/delineamentos/config/disciplina', [DisciplinaDelineamentoController::class,'store'])->name('disciplina.store');
+Route::put('/delineamentos/config/disciplina/edit/{id}', [DisciplinaDelineamentoController::class,'update'])->name('disciplina.update');
+Route::delete('/delineamentos/config/disciplina/delete/{id}', [DisciplinaDelineamentoController::class,'delete'])->name('disciplina.delete');
+Route::put('/delineamentos/config/disciplina/disable/{id}', [DisciplinaDelineamentoController::class,'disable'])->name('disciplina.disable');
+Route::put('/delineamentos/config/disciplina/enable/{id}', [DisciplinaDelineamentoController::class,'enable'])->name('disciplina.enable');
+
 
 //Detalhamentos
 Route::get('/detalhamentos', [DetalhamentoController::class,'index'])->name('detalhamentos.index');

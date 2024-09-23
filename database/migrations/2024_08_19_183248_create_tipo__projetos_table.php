@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipoProjetos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
