@@ -20,9 +20,12 @@
                                 <th>ID</th>
                                 <th>Projeto</th>
                                 <th>Número</th>
+                                <th>Delineador</th>
+                                <th>Aprovador</th>
                                 <th>Tipo</th>
                                 <th>Status</th>
                                 <th>Disciplina</th>
+                                <th>Necessidade Em</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -32,13 +35,16 @@
                                     <td>{{ $delineamento->id }}</td>
                                     <td>{{ $delineamento->projeto->numero_interno }}</td>
                                     <td>{{ $delineamento->num_del }}</td>
+                                    <td>{{ $delineamento->delineador->login }}</td>
+                                    <td>{{ $delineamento->aprovador->login }}</td>
                                     <td>{{ $delineamento->tipo }}</td>
                                     <td>{{ $delineamento->status }}</td>
                                     <td>{{ $delineamento->disciplina->name }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($delineamento->necessidade_em)->format('d/m/Y') }}</td>
                                     <td>
                                         <a href="{{ route('delineamentos.edit', $delineamento->id) }}"
-                                            class="btn btn-warning">Editar</a>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            class="btn btn-warning bi bi-pencil"> Editar</a>
+                                        <button type="button" class="btn btn-danger bi bi-trash" data-toggle="modal"
                                             data-target="#modalDelete{{ $delineamento->id }}">
                                             Excluir </button>
                                     </td>

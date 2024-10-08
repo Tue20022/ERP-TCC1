@@ -69,10 +69,14 @@ Route::delete('/delineamentos/config/disciplina/delete/{id}', [DisciplinaDelinea
 Route::put('/delineamentos/config/disciplina/disable/{id}', [DisciplinaDelineamentoController::class,'disable'])->name('disciplina.disable');
 Route::put('/delineamentos/config/disciplina/enable/{id}', [DisciplinaDelineamentoController::class,'enable'])->name('disciplina.enable');
 
-
 //Detalhamentos
 Route::get('/detalhamentos', [DetalhamentoController::class,'index'])->name('detalhamentos.index');
 Route::get('/detalhamentos/novo', [DetalhamentoController::class, 'create'])->name('detalhamentos.create');
+Route::post('/detalhamentos/novo', [DetalhamentoController::class, 'store'])->name('detalhamentos.store');
+Route::get('/detalhamentos/edit/{id}', [DetalhamentoController::class, 'edit'])->name('detalhamentos.edit');
+Route::put('/detalhamentos/edit/{id}', [DetalhamentoController::class, 'update'])->name('detalhamentos.update');
+Route::delete('/detalhamentos/delete/{id}', [DetalhamentoController::class, 'delete'])->name('detalhamentos.delete');
+
 
 
  

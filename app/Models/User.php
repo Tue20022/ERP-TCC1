@@ -48,4 +48,16 @@ class User extends Authenticatable
     public function projetos(){
         return $this->hasMany(Projeto::class, 'responsavel');
     }
+
+    public function delineamentos(){
+        return $this->hasMany(Delineamento::class, 'delineador_id');
+    }
+
+    public function detResponsavel(){
+        return $this->hasOne(Detalhamento::class, 'responsavel_id');
+    }
+
+    public function detAprovador(){
+        return $this->hasOne(Detalhamento::class, 'aprovador_id');
+    }
 }

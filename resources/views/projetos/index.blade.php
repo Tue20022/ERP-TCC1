@@ -16,9 +16,10 @@
                     <thead>
                         <tr>
                             <th width="5%">ID</th>
-                            <th width="10%">Nome</th>
-                            <th width="20%">Responsavel</th>
-                            <th width="20%">Tipo</th>
+                            <th width="10%">Cadastrado Em</th>
+                            <th width="15%">Número Interno</th>
+                            <th width="15%">Responsavel</th>
+                            <th width="10%">Tipo</th>
                             <th width="10%">Prioridade</th>
                             <th width="15%">Status</th>
                             <th width="20%">Ações</th>
@@ -28,8 +29,9 @@
                         @foreach ($projetos as $projeto)
                             <tr>
                                 <td>{{ $projeto->id }}</td>
+                                <td>{{ $projeto->created_at->format('d/m/Y') }}</td>
                                 <td>{{ $projeto->numero_interno }}</td>
-                                <td>{{ $projeto->user->name }}</td>
+                                <td>{{ $projeto->user->login }}</td>
                                 <td>{{ $projeto->tipoProjeto->name }}</td>
                                 <td>{{ $projeto->prioridade }}</td>
                                 <td>{{ $projeto->status }}</td>

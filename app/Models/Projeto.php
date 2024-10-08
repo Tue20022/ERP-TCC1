@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\TipoProjeto;
 use App\Models\Cliente;
+use App\Models\Delineamento;
+use App\Models\Detalhamento;
 
 class Projeto extends Model
 {
@@ -41,6 +43,11 @@ class Projeto extends Model
     public function delineamento()
     {
         return $this->hasOne(Delineamento::class, 'projeto_id');
+    }
+
+    public function detalhamento()
+    {
+        return $this->hasOne(Detalhamento::class, 'projeto_id');
     }
 
 }
