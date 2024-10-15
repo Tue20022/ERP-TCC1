@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\TipoProjeto;
 use App\Models\Cliente;
+use App\Models\StatusPlan;
+use App\Models\StatusExec;
 
 class ProjetoController extends Controller
 {
@@ -60,7 +62,13 @@ class ProjetoController extends Controller
         $cliente = new Cliente();
         $cliente = $cliente->all();
 
-        return view('projetos.config', compact('tipo', 'cliente'));
+        $statusPlan = new StatusPlan();
+        $statusPlan = $statusPlan->all();
+
+        $statusExec = new StatusExec();
+        $statusExec = $statusExec->all();
+
+        return view('projetos.config', compact('tipo', 'cliente', 'statusPlan', 'statusExec'));
     }
 
     public function edit($id)
@@ -77,7 +85,13 @@ class ProjetoController extends Controller
         $cliente = new Cliente();
         $cliente = $cliente->where('ativo', true)->get();
 
-        return view('projetos.edit', compact('projeto', 'users', 'tipo', 'cliente'));
+        $statusPlan = new StatusPlan();
+        $statusPlan = $statusPlan->where('ativo', true)->get();
+
+        $statusExec = new StatusExec();
+        $statusExec = $statusExec->where('ativo', true)->get();
+
+        return view('projetos.edit', compact('projeto', 'users', 'tipo', 'cliente', 'statusPlan', 'statusExec'));
     }
 
     public function update(Request $request, $id)
@@ -94,6 +108,18 @@ class ProjetoController extends Controller
             $projeto->prioridade = $request->prioridade;
             $projeto->cliente = $request->cliente;
             $projeto->descricao = $request->descricao;
+            
+            $projeto->inicio_prev_plan = $request->inicio_prev_plan;
+            $projeto->term_prev_plan = $request->term_prev_plan;
+            $projeto->inicio_real_plan = $request->inicio_real_plan;
+            $projeto->term_real_plan = $request->term_real_plan;
+            $projeto->status_plan = $request->status_plan;
+            
+            $projeto->inicio_prev_exec = $request->inicio_prev_exec;
+            $projeto->term_prev_exec = $request->term_prev_exec;
+            $projeto->inicio_real_exec = $request->inicio_real_exec;
+            $projeto->term_real_exec = $request->term_real_exec;
+            $projeto->status_exec = $request->status_exec;
             $projeto->save();
 
             return redirect()->route('projetos.edit', $id);

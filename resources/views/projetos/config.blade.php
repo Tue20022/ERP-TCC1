@@ -161,6 +161,162 @@
                     </div>  
                 </div>
             </div>
+            <div class="row">
+                <!-- Adição de Status de Planejamento-->
+                <div class="col-sm-6">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5 class="card-title text">Status de Planejamento</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-sm-12">
+                                <form action="{{ route('config.statusPlan') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" class="form-control" name="nome" id="nome"
+                                            placeholder="Digite o nome do Status"  required>
+                                        </div>
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary mt-4">Adicionar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-3">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="40%">Nome</th>
+                                                <th width="20%">Ativo</th>
+                                                <th width="40%">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($statusPlan as $s)
+                                                <tr>
+                                                    <td>{{ $s->nome }}</td>
+                                                    <td>
+                                                        @if ($s->ativo)
+                                                            <span class="badge bg-success text-white">Ativo</span>
+                                                        @else
+                                                            <span class="badge bg-danger text-white">Inativo</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning btn-sm mr-1"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalEditarStatusPlan{{ $s->id }}">
+                                                            <i class="bi bi-pencil"></i> Editar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm mr-1"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalExcluirStatusPlan{{ $s->id }}">
+                                                            <i class="bi bi-trash"></i> Excluir
+                                                        </button>
+                                                        @if ($s->ativo)
+                                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalDesativarStatusPlan{{ $s->id }}">
+                                                                <i class="bi bi-x-circle"></i> Desativar
+                                                            </button>
+                                                        @else 
+                                                            <button type="button" class="btn btn-success btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalAtivarStatusPlan{{ $s->id }}">
+                                                                <i class="bi bi-check-circle"></i> Ativar
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Adição de Status de Execução-->
+                <div class="col-sm-6">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5 class="card-title text">Status de Execução</h5> 
+                        </div>
+                        <div class="card-body">
+                            <div class="col-sm-12">
+                                <form action="{{ route('config.statusExec') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" class="form-control" name="nome" id="nome"
+                                            placeholder="Digite o nome do Status"  required>
+                                        </div>
+                                        <div class="col-sm-4 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary mt-4">Adicionar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-3">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="40%">Nome</th>
+                                                <th width="20%">Ativo</th>
+                                                <th width="40%">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($statusExec as $s)
+                                                <tr>
+                                                    <td>{{ $s->nome }}</td>
+                                                    <td>
+                                                        @if ($s->ativo)
+                                                            <span class="badge bg-success text-white">Ativo</span>
+                                                        @else
+                                                            <span class="badge bg-danger text-white">Inativo</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning btn-sm mr-1"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalEditarStatusExec{{ $s->id }}">
+                                                            <i class="bi bi-pencil"></i> Editar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm mr-1"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalExcluirStatusExec{{ $s->id }}">
+                                                            <i class="bi bi-trash"></i> Excluir
+                                                        </button>
+                                                        @if ($s->ativo)
+                                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalDesativarStatusExec{{ $s->id }}">
+                                                                <i class="bi bi-x-circle"></i> Desativar
+                                                            </button>
+                                                        @else
+                                                            <button type="button" class="btn btn-success btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#modalAtivarStatusExec{{ $s->id }}">
+                                                                <i class="bi bi-check-circle"></i> Ativar
+                                                            </button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -377,6 +533,230 @@
                     </div>
                     <div class="modal-footer">
                         <form action="{{ route('config.enableCliente', ['id' => $c->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Editar Status de Planejamento -->
+    @foreach ($statusPlan as $s)
+        <div class="modal fade text-start" id="modalEditarStatusPlan{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalEditarStatusPlan{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="modalEditarStatusPlan{{ $s->id }}Label">Editar Status de Planejamento</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <form action="{{ route('config.editStatusPlan', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" value="{{ $s->nome }}">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="ativo" name="ativo"
+                                    {{ $s->ativo ? 'checked' : '' }}>
+                                <label class="form-check label" for="ativo">Ativo</label>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Excluir Status de Planejamento -->
+    @foreach ($statusPlan as $s)
+        <div class="modal fade text-start" id="modalExcluirStatusPlan{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalExcluirStatusPlan{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalExcluirStatusPlan{{ $s->id }}Label">Excluir Status de Planejamento</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja excluir o status de planejamento {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.deleteStatusPlan', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Desativar Status de Planejamento -->
+    @foreach ($statusPlan as $s)
+        <div class="modal fade text-start" id="modalDesativarStatusPlan{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalDesativarStatusPlan{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalDesativarStatusPlan{{ $s->id }}Label">Desativar Status de Planejamento</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja desativar o status de planejamento {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.disableStatusPlan', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Desativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Ativar Status de Planejamento -->
+    @foreach ($statusPlan as $s)
+        <div class="modal fade text-start" id="modalAtivarStatusPlan{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalAtivarStatusPlan{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalAtivarStatusPlan{{ $s->id }}Label">Ativar Status de Planejamento</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja ativar o status de planejamento {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.enableStatusPlan', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Editar Status de Execução -->
+    @foreach ($statusExec as $s)
+        <div class="modal fade text-start" id="modalEditarStatusExec{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalEditarStatusExec{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="modalEditarStatusExec{{ $s->id }}Label">Editar Status de Execução</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <form action="{{ route('config.editStatusExec', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" value="{{ $s->nome }}">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="ativo" name="ativo"
+                                    {{ $s->ativo ? 'checked' : '' }}>
+                                <label class="form-check label" for="ativo">Ativo</label>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Excluir Status de Execução -->
+    @foreach ($statusExec as $s)
+        <div class="modal fade text-start" id="modalExcluirStatusExec{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalExcluirStatusExec{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalExcluirStatusExec{{ $s->id }}Label">Excluir Status de Execução</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja excluir o status de execução {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.deleteStatusExec', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Desativar Status de Execução -->
+    @foreach ($statusExec as $s)
+        <div class="modal fade text-start" id="modalDesativarStatusExec{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalDesativarStatusExec{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalDesativarStatusExec{{ $s->id }}Label">Desativar Status de Execução</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja desativar o status de execução {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.disableStatusExec', ['id' => $s->id]) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Desativar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Modal de Ativar Status de Execução -->
+    @foreach ($statusExec as $s)
+        <div class="modal fade text-start" id="modalAtivarStatusExec{{ $s->id }}" tabindex="-1"
+            aria-labelledby="modalAtivarStatusExec{{ $s->id }}Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalAtivarStatusExec{{ $s->id }}Label">Ativar Status de Execução</h5>
+                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p>Tem certeza que deseja ativar o status de execução {{ $s->nome }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('config.enableStatusExec', ['id' => $s->id]) }}" method="post">
                             @csrf
                             @method('put')
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

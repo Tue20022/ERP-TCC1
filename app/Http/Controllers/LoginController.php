@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Login;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,20 +14,22 @@ class LoginController extends Controller
 
     public function logar(Request $request)
     {
-        $login = $request->input('login');
-        $password = Hash::make($request->input('password'));
+ 
+        $credentials = $request->only('login', 'password');
 
-        try {
-            User::where('login', $login)->where('password', $password)->first();
-            return redirect()->route('home')->with('successMessage', 'Login efetuado com sucesso');
-        } catch (\Exception $e) {
-            Log::info('Usuário ou senha inválidos: ' . $e->getMessage());
-            return redirect()->route('login')->with('errorMessage', 'Usuário ou senha inválidos');
+        if (Auth::attempt($credentials)) {
+            // Autenticado com sucesso.
+            return redirect()->intended('home');
         }
+
+        // Se a autenticação falhar.
+        return back()->with('errorMessage', 'Credenciais incorretas.');
+        
     }
 
     public function logout()
     {
+        Auth::logout();
         return redirect()->route('login');
     }
 }

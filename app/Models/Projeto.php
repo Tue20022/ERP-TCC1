@@ -23,6 +23,16 @@ class Projeto extends Model
         'prioridade',
         'cliente', //fk
         'descricao',
+        'inicio_prev_plan',
+        'term_prev_plan',
+        'inicio_real_plan',
+        'term_real_plan',
+        'status_plan',
+        'inicio_prev_exec',
+        'term_prev_exec',
+        'inicio_real_exec',
+        'term_real_exec',
+        'status_exec'
     ];
 
    public function user()
@@ -50,4 +60,12 @@ class Projeto extends Model
         return $this->hasOne(Detalhamento::class, 'projeto_id');
     }
 
+    public function statusPlan(){
+        return $this->hasOne(StatusPlan::class, 'id');
+    }
+
+    public function statusExec()
+    {
+        return $this->hasOne(StatusExec::class, 'id');
+    }
 }

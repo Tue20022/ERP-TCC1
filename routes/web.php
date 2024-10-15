@@ -9,10 +9,13 @@ use App\Http\Controllers\DelineamentoController;
 use App\Http\Controllers\TipoProjetoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClienteProjetoController;
+use App\Http\Controllers\StatusExecController;
+use App\Http\Controllers\StatusPlanController;
 
 //Login
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Home
 Route::get('/home', [HomeController::class, 'home'])->name('home');
@@ -45,6 +48,20 @@ Route::put('/projetos/config/tipo/edit{id}', [TipoProjetoController::class, 'tip
 Route::delete('/projetos/config/tipo/delete{id}', [TipoProjetoController::class, 'tipoDelete'])->name('config.deleteTipo');
 Route::put('/projetos/config/tipo/disable{id}', [TipoProjetoController::class, 'tipoDisable'])->name('config.disableTipo');
 Route::put('/projetos/config/tipo/enable{id}', [TipoProjetoController::class, 'tipoEnable'])->name('config.enableTipo');
+
+//Status de Planejamento
+Route::post('/projetos/config/statusPlan', [StatusPlanController::class, 'store'])->name('config.statusPlan');
+Route::put('/projetos/config/statusPlan/edit{id}', [StatusPlanController::class, 'update'])->name('config.editStatusPlan');
+Route::delete('/projetos/config/statusPlan/delete{id}', [StatusPlanController::class, 'delete'])->name('config.deleteStatusPlan');
+Route::put('/projetos/config/statusPlan/disable{id}', [StatusPlanController::class, 'disable'])->name('config.disableStatusPlan');
+Route::put('/projetos/config/statusPlan/enable{id}', [StatusPlanController::class, 'enable'])->name('config.enableStatusPlan');
+
+//Status de Execução
+Route::post('/projetos/config/statusExec', [StatusExecController::class, 'store'])->name('config.statusExec');
+Route::put('/projetos/config/statusExec/edit{id}', [StatusExecController::class, 'update'])->name('config.editStatusExec');
+Route::delete('/projetos/config/statusExec/delete{id}', [StatusExecController::class, 'delete'])->name('config.deleteStatusExec');
+Route::put('/projetos/config/statusExec/disable{id}', [StatusExecController::class, 'disable'])->name('config.disableStatusExec');
+Route::put('/projetos/config/statusExec/enable{id}', [StatusExecController::class, 'enable'])->name('config.enableStatusExec');
 
 //Clientes de Projetos
 Route::post('/projetos/config/cliente', [ClienteProjetoController::class, 'clientes'])->name('config.cliente');
