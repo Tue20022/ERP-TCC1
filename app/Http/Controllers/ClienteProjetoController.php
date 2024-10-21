@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Projeto;
+use PhpParser\Node\Expr\FuncCall;
 
 class ClienteProjetoController extends Controller
 {

@@ -68,4 +68,9 @@ class Projeto extends Model
     {
         return $this->hasOne(StatusExec::class, 'id');
     }
+
+    public function teo()
+    {
+        return $this->hasOne(TEO::class, 'projeto_id');
+    }
 }

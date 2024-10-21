@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClienteProjetoController;
 use App\Http\Controllers\StatusExecController;
 use App\Http\Controllers\StatusPlanController;
+use App\Http\Controllers\TEOController;
 
 //Login
 Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -94,6 +95,12 @@ Route::get('/detalhamentos/edit/{id}', [DetalhamentoController::class, 'edit'])-
 Route::put('/detalhamentos/edit/{id}', [DetalhamentoController::class, 'update'])->name('detalhamentos.update');
 Route::delete('/detalhamentos/delete/{id}', [DetalhamentoController::class, 'delete'])->name('detalhamentos.delete');
 
-
+//TEO
+Route::get('/teos', [TEOController::class, 'index'])->name('teo.index');
+Route::get('/teos/novo', [TEOController::class, 'create'])->name('teo.create');
+Route::post('/teos/novo', [TEOController::class, 'store'])->name('teo.store');
+Route::get('/teos/edit/{id}', [TEOController::class, 'edit'])->name('teo.edit');
+Route::put('/teos/edit/{id}', [TEOController::class, 'update'])->name('teo.update');
+Route::delete('/teos/delete/{id}', [TEOController::class, 'destroy'])->name('teo.delete');
 
  

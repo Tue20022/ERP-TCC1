@@ -222,6 +222,21 @@
                 </div>
             </li>
 
+            <!-- Nav Item - TEO Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTEO"
+                    aria-expanded="true" aria-controls="collapseTEO">
+                    <i class="bi bi-folder-symlink-fill"></i>
+                    <span>TEO</span>
+                </a>
+                <div id="collapseTEO" class="collapse" aria-labelledby="headingTEO" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Acessos rápidos:</h6>
+                        <a class="collapse-item" href="{{route('teo.create')}}">Cadastro</a>
+                        <a class="collapse-item" href="{{route('teo.index')}}">Listagem</a>
+                    </div>
+                </div>
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 

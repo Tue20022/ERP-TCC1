@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function detAprovador(){
         return $this->hasOne(Detalhamento::class, 'aprovador_id');
     }
+
+    public function teoResponsavel(){
+        return $this->hasMany(TEO::class, 'responsavel_id');
+    }
 }
