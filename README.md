@@ -95,5 +95,3 @@ Contribuições são bem-vindas! Siga as etapas abaixo:
    git push origin feature/nova-feature
    ```
 5. Abra um Pull Request.
-
-Espero que este README atenda às suas expectativas! Sinta-se à vontade para ajustá-lo com informações mais específicas do projeto.
