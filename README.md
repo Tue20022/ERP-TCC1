@@ -25,7 +25,7 @@ O projeto segue a arquitetura MVC:
 
 ## Instalação e Configuração
 ### Pré-requisitos
-- **PHP** >= 7.4
+- **PHP 8.3** 
 - **Composer**
 - **SQLite**
 
